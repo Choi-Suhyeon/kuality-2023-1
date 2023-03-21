@@ -16,6 +16,7 @@ static inline void flush(void) {
 }
 
 bool playUpDownGame(const Level * const kLvl) {
+    printf("RANGE: 0~%u / ATTEMPT: %u\n", kLvl->kMaxNum, kLvl->kMaxCnt);
     srand((unsigned) time(NULL));
     
     const unsigned kRandNum = rand() % (kLvl->kMaxNum + 1);
@@ -24,7 +25,7 @@ bool playUpDownGame(const Level * const kLvl) {
              input = 0;
 
     while (count--) {
-        printf("\nNUMBER > ");
+        printf("\n[%02u]NUMBER > ", count);
         scanf("%u", &input);
 
         if      (input > kLvl->kMaxNum) puts("[E] OUT OF RANGE VAL");
@@ -37,9 +38,9 @@ bool playUpDownGame(const Level * const kLvl) {
 }
 
 int main(void) {
-    const Level kEasy = { .kMaxNum = 100, .kMaxCnt = 15 },
-                kItrm = { .kMaxNum = 150, .kMaxCnt = 13 },
-                kHard = { .kMaxNum = 200, .kMaxCnt = 11 };
+    const Level kEasy = { .kMaxNum = 200, .kMaxCnt = 14 },
+                kItrm = { .kMaxNum = 300, .kMaxCnt = 12 },
+                kHard = { .kMaxNum = 500, .kMaxCnt = 10 };
 
     char ifToQuit = '\0',
          level    = '\0';
